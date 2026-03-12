@@ -1,4 +1,4 @@
-// Simulated hotel management data - represents SAGE X3 ERP data
+
 export const hotelKPIs = {
   occupancyRate: 78.5,
   averageDailyRate: 185.0,
@@ -103,14 +103,14 @@ export const n8nWorkflows = [
   {
     id: "WF-001",
     name: "Check-in Automatico",
-    trigger: "Webhook - PMS",
+    trigger: "",
     status: "activo",
     executions: 1245,
     lastRun: "2026-02-10 09:30",
     successRate: 98.5,
     steps: [
-      "Recibir datos del PMS",
-      "Validar reserva en SAGE X3",
+      "Recibir datos",
+      "Validar reserva",
       "Generar tarjeta de acceso",
       "Enviar email de bienvenida",
       "Notificar a Housekeeping",
@@ -121,13 +121,13 @@ export const n8nWorkflows = [
   {
     id: "WF-002",
     name: "Reporte Diario de Ingresos",
-    trigger: "Cron - 23:59",
+    trigger: "",
     status: "activo",
     executions: 365,
     lastRun: "2026-02-09 23:59",
     successRate: 99.7,
     steps: [
-      "Consultar ventas del dia en SAGE X3",
+      "Consultar ventas del dia en ERP",
       "Procesar datos con Python",
       "Generar reporte Excel",
       "Enviar por email a gerencia",
@@ -138,7 +138,7 @@ export const n8nWorkflows = [
   {
     id: "WF-003",
     name: "Alerta de Stock Bajo",
-    trigger: "Evento - Inventario",
+    trigger: "",
     status: "activo",
     executions: 89,
     lastRun: "2026-02-10 07:15",
@@ -146,7 +146,7 @@ export const n8nWorkflows = [
     steps: [
       "Monitorear niveles de inventario",
       "Detectar items bajo minimo",
-      "Consultar proveedores en SAGE X3",
+      "Consultar proveedores en ERP",
       "Generar orden de compra",
       "Notificar al departamento"
     ],
@@ -155,7 +155,7 @@ export const n8nWorkflows = [
   {
     id: "WF-004",
     name: "Encuesta Post-Estancia",
-    trigger: "Webhook - Check-out",
+    trigger: "",
     status: "activo",
     executions: 2340,
     lastRun: "2026-02-10 11:00",
@@ -173,7 +173,7 @@ export const n8nWorkflows = [
   {
     id: "WF-005",
     name: "Sync Tarifas OTAs",
-    trigger: "Cron - cada 15 min",
+    trigger: "",
     status: "pausado",
     executions: 8920,
     lastRun: "2026-02-10 08:45",
@@ -184,7 +184,7 @@ export const n8nWorkflows = [
       "Actualizar en Booking.com",
       "Actualizar en Expedia",
       "Actualizar en canal directo",
-      "Registrar en SAGE X3"
+      "Registrar en ERP"
     ],
     description: "Sincronizacion de tarifas dinamicas con OTAs basada en demanda"
   },
@@ -193,19 +193,14 @@ export const n8nWorkflows = [
 export const pythonScripts = [
   {
     name: "revenue_forecast.py",
-    description: "Prediccion de ingresos usando regresion lineal y datos historicos de SAGE X3",
+    description: "Prediccion de ingresos usando regresion lineal y datos historicos de ERP",
     language: "Python 3.11",
     libraries: ["pandas", "scikit-learn", "matplotlib"],
     lastRun: "2026-02-10 06:00",
     status: "completado",
-    code: `import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-import numpy as np
-
-# Conexion a SAGE X3 via ODBC
+    code: `
 def get_revenue_data():
-    """Obtiene datos historicos de ingresos desde SAGE X3"""
+    """Obtiene datos historicos de ingresos desde ERP"""
     query = """
         SELECT FECHA, INGRESOS_TOTAL, OCUPACION,
                TARIFA_PROMEDIO, NUM_RESERVAS
@@ -238,7 +233,6 @@ def train_model(df):
     model.fit(X_train, y_train)
     score = model.score(X_test, y_test)
     
-    print(f"R2 Score: {score:.4f}")
     return model
 
 def forecast_next_month(model):
@@ -267,11 +261,9 @@ if __name__ == "__main__":
     name: "guest_sentiment.py",
     description: "Analisis de sentimiento de resenas de huespedes con NLP",
     language: "Python 3.11",
-    libraries: ["nltk", "textblob", "pandas"],
     lastRun: "2026-02-10 08:00",
     status: "completado",
-    code: `from textblob import TextBlob
-import pandas as pd
+    code: `
 
 def analyze_reviews(reviews):
     """Analiza sentimiento de resenas de huespedes"""
@@ -318,9 +310,7 @@ print(df.to_string())`
     libraries: ["pandas", "scipy", "numpy"],
     lastRun: "2026-02-09 22:00",
     status: "completado",
-    code: `import numpy as np
-import pandas as pd
-from scipy.optimize import minimize
+    code: `
 
 def calculate_eoq(demand, order_cost, holding_cost):
     """Calcula la Cantidad Economica de Pedido (EOQ)"""
@@ -380,7 +370,7 @@ export const officeReports = [
     icon: "spreadsheet",
     downloadKey: "financiero",
     description: "Cuadro de mando con KPIs financieros, comparativa presupuesto vs real, y proyecciones trimestrales.",
-    features: ["Power Query desde SAGE X3", "Modelo de datos", "KPIs automaticos", "Slicers interactivos"],
+    features: ["Power Query desde ERP", "Modelo de datos", "KPIs automaticos", "Slicers interactivos"],
     lastGenerated: "2026-02-05",
     formula: '=IFERROR(INDEX(Ingresos,MATCH(1,(Mes=A2)*(Depto=B2),0)),0)'
   },
@@ -400,7 +390,7 @@ export const officeReports = [
     icon: "spreadsheet",
     downloadKey: "proveedores",
     description: "Base de datos de proveedores con evaluaciones, historial de compras y condiciones comerciales.",
-    features: ["Validacion de datos", "Buscarv automatico", "Alertas de vencimiento", "Importacion SAGE X3"],
+    features: ["Validacion de datos", "Buscarv automatico", "Alertas de vencimiento", "Importacion ERP"],
     lastGenerated: "2026-02-08",
     formula: '=VLOOKUP(A2,Proveedores!A:F,4,FALSE)'
   },

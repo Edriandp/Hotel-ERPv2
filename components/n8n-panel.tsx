@@ -84,7 +84,7 @@ export function N8NPanel() {
           <div>
             <h2 className="text-xl font-bold text-foreground">Automatizacion de Workflows</h2>
             <p className="text-sm text-muted-foreground">
-              Flujos automatizados que conectan SAGE X3, Python y herramientas ofimaticas
+              
             </p>
           </div>
         </div>
@@ -92,39 +92,7 @@ export function N8NPanel() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <Card className="bg-card border-border">
-          <CardContent className="p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <Zap className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-card-foreground">{totalExecutions.toLocaleString()}</p>
-              <p className="text-xs text-muted-foreground">Ejecuciones totales</p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-card border-border">
-          <CardContent className="p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent/10">
-              <CheckCircle2 className="w-4 h-4 text-accent" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-card-foreground">{avgSuccess}%</p>
-              <p className="text-xs text-muted-foreground">Tasa de exito promedio</p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-card border-border">
-          <CardContent className="p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-chart-3/10">
-              <Activity className="w-4 h-4 text-chart-3" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-card-foreground">{activeCount}/{n8nWorkflows.length}</p>
-              <p className="text-xs text-muted-foreground">Workflows activos</p>
-            </div>
-          </CardContent>
-        </Card>
+        
       </div>
 
       {/* Workflow list + detail */}
@@ -159,7 +127,6 @@ export function N8NPanel() {
               </div>
               <div className="flex items-center gap-3 text-xs text-muted-foreground">
                 <span>{wf.trigger}</span>
-                <span>{wf.executions.toLocaleString()} ejecuciones</span>
               </div>
             </button>
           ))}
@@ -217,29 +184,6 @@ export function N8NPanel() {
             </div>
           </CardHeader>
           <CardContent>
-            {/* Workflow info */}
-            <div className="grid grid-cols-2 gap-3 mb-5">
-              <div className="flex items-center gap-2 text-sm">
-                <Clock className="w-4 h-4 text-muted-foreground" />
-                <span className="text-muted-foreground">Trigger:</span>
-                <span className="text-card-foreground font-medium">{selectedWorkflow.trigger}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Zap className="w-4 h-4 text-muted-foreground" />
-                <span className="text-muted-foreground">Exito:</span>
-                <span className="text-card-foreground font-medium">{selectedWorkflow.successRate}%</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Activity className="w-4 h-4 text-muted-foreground" />
-                <span className="text-muted-foreground">Ejecuciones:</span>
-                <span className="text-card-foreground font-medium">{selectedWorkflow.executions.toLocaleString()}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Clock className="w-4 h-4 text-muted-foreground" />
-                <span className="text-muted-foreground">Ultima:</span>
-                <span className="text-card-foreground font-medium font-mono text-xs">{selectedWorkflow.lastRun}</span>
-              </div>
-            </div>
 
             {/* Workflow Steps Visual */}
             <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">
@@ -293,41 +237,7 @@ export function N8NPanel() {
               })}
             </div>
 
-            {/* Execution Log */}
-            {executionLog.length > 0 && (
-              <div className="rounded-lg overflow-hidden border border-border">
-                <div className="flex items-center justify-between px-4 py-2 bg-sidebar border-b border-sidebar-border">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-destructive/80" />
-                    <div className="w-3 h-3 rounded-full bg-chart-3/80" />
-                    <div className="w-3 h-3 rounded-full bg-accent/80" />
-                    <span className="text-xs text-sidebar-foreground ml-2 font-mono">
-                      Execution Log
-                    </span>
-                  </div>
-                  {runState === "running" && (
-                    <div className="flex items-center gap-1.5">
-                      <CircleDot className="w-3 h-3 text-accent animate-pulse" />
-                      <span className="text-xs text-accent font-mono">running</span>
-                    </div>
-                  )}
-                  {runState === "done" && (
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3 h-3 text-accent" />
-                      <span className="text-xs text-accent font-mono">success</span>
-                    </div>
-                  )}
-                </div>
-                <pre className="bg-sidebar text-sidebar-foreground p-4 overflow-x-auto text-xs leading-relaxed font-mono max-h-48 overflow-y-auto">
-                  {executionLog.map((line, idx) => (
-                    <div key={idx} className={cn(
-                      idx === executionLog.length - 1 && runState === "running" ? "text-primary" : "text-sidebar-foreground"
-                    )}>{line}</div>
-                  ))}
-                  {runState === "running" && <span className="inline-block w-1.5 h-3.5 bg-primary animate-pulse ml-0.5" />}
-                </pre>
-              </div>
-            )}
+            
           </CardContent>
         </Card>
       </div>

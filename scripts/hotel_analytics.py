@@ -14,7 +14,7 @@ random.seed(42)
 def revenue_forecast():
     """Prediccion de ingresos con regresion lineal manual"""
     print(">>> python revenue_forecast.py")
-    print("Cargando datos historicos de SAGE X3...")
+    print("Cargando datos historicos")
 
     # Generar datos historicos simulados (24 meses)
     months = []
@@ -60,7 +60,6 @@ def revenue_forecast():
     print(f"Entrenando modelo de Regresion Lineal...")
     print(f"  Pendiente (slope):   {slope:,.2f} $/mes")
     print(f"  Intercepto:          ${intercept:,.2f}")
-    print(f"  R2 Score:            {r_squared:.4f}")
     print()
 
     # Pronostico para los proximos 3 meses
@@ -189,7 +188,7 @@ def guest_sentiment():
 def inventory_optimizer():
     """Optimizacion de inventario usando EOQ"""
     print(">>> python inventory_optimizer.py")
-    print("Conectando a SAGE X3 - Modulo Inventario...")
+    print("Conectando a  ERP - Modulo Inventario...")
     print("Calculando EOQ (Economic Order Quantity)...")
     print()
 
@@ -242,7 +241,7 @@ def inventory_optimizer():
     print(f"  Costo total anual de compras: ${total_cost:>14,.2f}")
     print(f"  Ahorro estimado con EOQ:      ${total_savings:>14,.2f} ({total_savings/total_cost*100:.1f}%)")
     print()
-    print("Ordenes de compra generadas en SAGE X3: 3 items bajo punto de reorden")
+    print("Ordenes de compra generadas en ERP: 3 items bajo punto de reorden")
     print("Reporte exportado a: reports/inventory_feb2026.xlsx")
 
     result = {

@@ -30,49 +30,8 @@ const iconMap: Record<string, React.ElementType> = {
 }
 
 const skills = [
-  {
-    category: "Excel Avanzado",
-    icon: FileSpreadsheet,
-    items: [
-      "Tablas dinamicas y segmentaciones",
-      "Funciones avanzadas (BUSCARV, INDICE/COINCIDIR, SUMAPRODUCTO)",
-      "Power Query para ETL desde SAGE X3",
-      "Macros VBA para automatizacion",
-      "Formato condicional y validacion de datos",
-      "Solver para optimizacion",
-    ],
-  },
-  {
-    category: "Power BI / Visualizacion",
-    icon: BarChart3,
-    items: [
-      "Dashboards interactivos",
-      "Conexion directa a SAGE X3",
-      "Modelo de datos relacional",
-      "DAX para medidas calculadas",
-      "Publicacion y comparticion",
-    ],
-  },
-  {
-    category: "PowerPoint Corporativo",
-    icon: Presentation,
-    items: [
-      "Presentaciones ejecutivas",
-      "Graficos vinculados a Excel en tiempo real",
-      "Plantillas corporativas del hotel",
-      "Exportacion automatizada a PDF",
-    ],
-  },
-  {
-    category: "Automatizacion Office",
-    icon: Calculator,
-    items: [
-      "Office Scripts para Excel Online",
-      "Power Automate (flujos con N8N)",
-      "Sharepoint para gestion documental",
-      "Integracion con Teams para alertas",
-    ],
-  },
+  
+  
 ]
 
 export function OfficePanel() {
@@ -125,7 +84,7 @@ export function OfficePanel() {
           </div>
           <div>
             <h2 className="text-xl font-bold text-foreground">
-              Ofimatica - Nivel Avanzado
+              Ofimatica
             </h2>
             <p className="text-sm text-muted-foreground">
               Reportes descargables en Excel real, generados con ExcelJS desde
@@ -152,35 +111,7 @@ export function OfficePanel() {
         </div>
       )}
 
-      {/* Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {skills.map((skill) => {
-          const Icon = skill.icon
-          return (
-            <Card key={skill.category} className="bg-card border-border">
-              <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <Icon className="w-4 h-4 text-primary" />
-                  <h4 className="text-sm font-semibold text-card-foreground">
-                    {skill.category}
-                  </h4>
-                </div>
-                <ul className="flex flex-col gap-1.5">
-                  {skill.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2 text-xs text-muted-foreground"
-                    >
-                      <CheckCircle2 className="w-3 h-3 text-accent mt-0.5 shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          )
-        })}
-      </div>
+     
 
       {/* Reports Section */}
       <div>
@@ -271,22 +202,7 @@ export function OfficePanel() {
             </CardHeader>
             <CardContent>
               {/* Features */}
-              <div className="mb-4">
-                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">
-                  Funcionalidades
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedReport.features.map((feature) => (
-                    <Badge
-                      key={feature}
-                      variant="outline"
-                      className="text-xs bg-primary/5 text-primary border-primary/20"
-                    >
-                      {feature}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+            
 
               {/* Formula Example */}
               {selectedReport.formula && (
@@ -312,28 +228,7 @@ export function OfficePanel() {
               )}
 
               {/* Integration diagram */}
-              <div className="mt-4 p-4 rounded-lg bg-muted/50 border border-border">
-                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">
-                  Flujo de Datos
-                </h4>
-                <div className="flex items-center justify-center gap-2 flex-wrap text-xs">
-                  <span className="px-3 py-1.5 rounded-lg bg-primary/10 text-primary font-medium border border-primary/20">
-                    SAGE X3
-                  </span>
-                  <span className="text-muted-foreground">{">"}</span>
-                  <span className="px-3 py-1.5 rounded-lg bg-accent/10 text-accent font-medium border border-accent/20">
-                    Python ETL
-                  </span>
-                  <span className="text-muted-foreground">{">"}</span>
-                  <span className="px-3 py-1.5 rounded-lg bg-chart-3/10 text-chart-3 font-medium border border-chart-3/20">
-                    Excel / Power BI
-                  </span>
-                  <span className="text-muted-foreground">{">"}</span>
-                  <span className="px-3 py-1.5 rounded-lg bg-muted text-muted-foreground font-medium border border-border">
-                    N8N (Distribucion)
-                  </span>
-                </div>
-              </div>
+              
 
               {/* Download all reports */}
               <div className="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/20">

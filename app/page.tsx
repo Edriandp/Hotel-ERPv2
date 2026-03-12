@@ -17,10 +17,10 @@ type Section = "dashboard" | "sage" | "n8n" | "python" | "office"
 
 const sectionTitles: Record<Section, string> = {
   dashboard: "Panel de Control",
-  sage: "SAGE X3",
-  n8n: "N8N Workflows",
+  sage: "ERP Hotelero",
+  n8n: "Workflows",
   python: "Python Analytics",
-  office: "Ofimatica Avanzada",
+  office: "Ofimatica",
 }
 
 export default function HotelDashboard() {

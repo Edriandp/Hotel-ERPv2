@@ -110,54 +110,6 @@ export function PythonPanel() {
         </div>
       </div>
 
-      {/* Capabilities */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <Card className="bg-card border-border">
-          <CardContent className="p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <BarChart3 className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-card-foreground">
-                Data Analytics
-              </p>
-              <p className="text-xs text-muted-foreground">
-                pandas, numpy, matplotlib
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-card border-border">
-          <CardContent className="p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent/10">
-              <Brain className="w-4 h-4 text-accent" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-card-foreground">
-                Machine Learning
-              </p>
-              <p className="text-xs text-muted-foreground">
-                scikit-learn, NLP, TextBlob
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-card border-border">
-          <CardContent className="p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-chart-3/10">
-              <Cpu className="w-4 h-4 text-chart-3" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-card-foreground">
-                Optimizacion
-              </p>
-              <p className="text-xs text-muted-foreground">
-                scipy, EOQ, scheduling
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
 
       {/* Scripts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
@@ -186,16 +138,6 @@ export function PythonPanel() {
               {script.description}
             </p>
             <div className="flex items-center gap-2 flex-wrap">
-              {script.libraries.map((lib) => (
-                <Badge
-                  key={lib}
-                  variant="outline"
-                  className="text-xs bg-muted text-muted-foreground border-border"
-                >
-                  <Package className="w-3 h-3 mr-1" />
-                  {lib}
-                </Badge>
-              ))}
             </div>
             <div className="flex items-center gap-2 mt-3 text-xs text-muted-foreground">
               <CheckCircle2 className="w-3 h-3 text-accent" />
